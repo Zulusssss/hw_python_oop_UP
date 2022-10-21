@@ -121,14 +121,12 @@ def read_package(workout_type: str, data: list) -> Training:
                                                    'SWM': Swimming,
                                                    'WLK': SportsWalking}
     if workout_type not in dict_for_classes:
-        return False
+        raise KeyError
     return dict_for_classes[workout_type](*data)
 
 
 def main(training: Training) -> None:
     """Главная функция."""
-    if training is False:
-        return None
     info = training.show_training_info()
     print(info.get_message())
 
